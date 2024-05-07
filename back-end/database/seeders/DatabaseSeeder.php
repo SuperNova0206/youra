@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
                 SpaceTypesSeeder::class,
                 TrainersSeeder::class,
                 PermissionsSeeder::Class,
-                UsersSeeder::class
+                UsersSeeder::class,
+                TrainerSpaceInfoSeeder::class,
+                UserPermissionsInfoSeeder::class
             ]
         );
     }
