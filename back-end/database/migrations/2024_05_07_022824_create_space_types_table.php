@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('space_id');
             $table->foreign('space_id')->references('id')->on('spaces');
+            $table->string('type');
             $table->timestamps();
         });
     }

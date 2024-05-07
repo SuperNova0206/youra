@@ -8,11 +8,22 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
+    /**wh
      * Seed the application's database.
      */
     public function run(): void
     {
-        // pass 
+        $this->call(
+            [
+                MaterialTypesSeeder::class,
+                MaterialGroupsSeeder::class,
+                MaterialsSeeder::class, 
+                SpacesSeeder::Class,
+                SpaceTypesSeeder::class,
+                TrainersSeeder::class,
+                PermissionsSeeder::Class,
+                UsersSeeder::class
+            ]
+        );
     }
 }
