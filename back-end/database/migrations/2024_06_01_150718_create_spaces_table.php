@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('spaces', function (Blueprint $table) {
             $table->id();
-            $table->string('space_name')->unique();
-            $table->unsignedBigInteger('material_id');
-            $table->foreign('material_id')->references('id')->on('materials');
+            $table->string('name');
+            $table->unsignedBigInteger('type_id');
+            $table->foreign('type_id')->references('id')->on('space_types');
             $table->timestamps();
         });
     }

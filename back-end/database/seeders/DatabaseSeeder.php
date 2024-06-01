@@ -15,16 +15,16 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(
             [
-                MaterialTypesSeeder::class,
-                MaterialGroupsSeeder::class,
-                MaterialsSeeder::class, 
-                SpacesSeeder::Class,
-                SpaceTypesSeeder::class,
-                TrainersSeeder::class,
-                PermissionsSeeder::Class,
+                SpaceTypeSeeder::class,
+                SpaceSeeder::class,
+                MaterialSeeder::class,
+                MaterialGroupSeeder::class,
+                MaterialTypeSeeder::class,
+                TrainerSeeder::class,
+                PermissionSeeder::class,
                 UsersSeeder::class,
                 TrainerSpaceInfoSeeder::class,
-                UserPermissionsInfoSeeder::class
+                UserPermissionSeeder::class
             ]
         );
     }

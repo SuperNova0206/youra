@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trainer_space_infos', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('trainer_id');
-            $table->foreign('trainer_id')->references('id')->on('trainers');
-            $table->unsignedBigInteger('space_id');
-            $table->foreign('space_id')->references('id')->on('spaces');
+            $table->string('user_name');
+            $table->string('password');
+            $table->enum('job', ['primary', 'secondary']);
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trainer_space_infos');
+        Schema::dropIfExists('users');
     }
 };

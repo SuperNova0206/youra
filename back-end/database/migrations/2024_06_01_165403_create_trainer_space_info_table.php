@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('material_groups', function (Blueprint $table) {
+        Schema::create('trainer_space_info', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('trainer_id');
+            $table->foreign('trainer_id')->references('id')->on('trainers');
+            $table->unsignedBigInteger('space_id');
+            $table->foreign('space_id')->references('id')->on('spaces');
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('material_groups');
+        Schema::dropIfExists('trainer_space_info');
     }
 };

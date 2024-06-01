@@ -2,64 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\material;
 use Illuminate\Http\Request;
+use App\Models\Material;
 
 class MaterialController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
+    public function index() {
+        $materials = Material::all();
+        return response()->json($materials, 201);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(material $material)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(material $material)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, material $material)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(material $material)
-    {
-        //
+    public function insert(Request $tab) {
+        $material = new Material();
+        $material->space_id=$tab->space_id;
+        $material->description=$tab->description;
+        if(!$material->save()){
+            return ['msg'=>false];
+        }else {
+            return ['msg'=>true];
+        }
+        
     }
 }

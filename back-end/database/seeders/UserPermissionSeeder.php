@@ -6,47 +6,59 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TrainerSpaceInfoSeeder extends Seeder
+class UserPermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        DB::table('trainer_space_info')->insert([
+        DB::table('user_permission_info')->insert([
             [
-                'trainer_id' => 1,
-                'space_id' => 1,
+                'permission_id' => 1,
+                'user_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'trainer_id' => 1,
-                'space_id' => 2,
+                'permission_id' => 2,
+                'user_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'trainer_id' => 2,
-                'space_id' => 2,
+                'permission_id' => 3,
+                'user_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'trainer_id' => 3,
-                'space_id' => 3,
+                'permission_id' => 4,
+                'user_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'trainer_id' => 4,
-                'space_id' => 1,
+                'permission_id' => 1,
+                'user_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'trainer_id' => 5,
-                'space_id' => 3,
+                'permission_id' => 3,
+                'user_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'permission_id' => 2,
+                'user_id' => 4,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'permission_id' => 4,
+                'user_id' => 4,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

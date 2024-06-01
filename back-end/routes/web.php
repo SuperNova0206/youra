@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route as route;
+use App\Http\Controllers\MaterialController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+route::get('materials', [MaterialController::class, 'index']);
+route::post('materials', [MaterialController::class, 'insert']);

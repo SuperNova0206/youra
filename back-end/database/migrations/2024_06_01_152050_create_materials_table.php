@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('space_types', function (Blueprint $table) {
+        Schema::create('materials', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('space_id');
             $table->foreign('space_id')->references('id')->on('spaces');
-            $table->string('type');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('space_types');
+        Schema::dropIfExists('materials');
     }
 };
