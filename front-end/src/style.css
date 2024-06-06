@@ -1,0 +1,31 @@
+:root {
+    --app-bg: #101827;
+    --text-color: #fff;
+  }
+  
+  .light {
+    --app-bg: #fff;
+    --text-color: #000;
+  }
+  
+  body {
+    background-color: var(--app-bg);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .mode-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .mode-switch i {
+    transition: transform 0.3s;
+  }
+  
+  .mode-switch:hover i {
+    transform: rotate(180deg);
+  }
+  
