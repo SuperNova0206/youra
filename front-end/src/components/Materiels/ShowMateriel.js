@@ -5,24 +5,24 @@ import { showMateriel } from "../../services/ActionsThunk_Materiel";
 
 export default function ShowMateriel() {
     const { id } = useParams();
-    const Materiel = useSelector( ( state ) => state.Materiel.details_Materiel );
-    const disptach = useDispatch();
+    const materiel = useSelector((state) => state.materiel.details_Materiel);
+    const dispatch = useDispatch();
 
-    useEffect( () => {
-        disptach( showMateriel( id ) );
-    }, [ id ] );
+    useEffect(() => {
+        dispatch(showMateriel(id));
+    }, [id, dispatch]);
+
     return (
-        Materiel && (
+        materiel && (
             <div className="card w-75 mx-auto mt-4">
                 <h5 className="card-header bg-primary text-white fw-bold">
-                    { Materiel.nom_complet }
+                    ID: {materiel.id}
                 </h5>
                 <div className="card-body">
-                    <p>Date de naissance: { Materiel.date_naissance }</p>
-                    <p>Genre: { Materiel.genre === "M" ? "Male" : "Femelle" }</p>
-                    <p>Note: { Materiel.note }</p>
+                    <p>Description: {materiel.description}</p>
                 </div>
             </div>
         )
     );
 }
+

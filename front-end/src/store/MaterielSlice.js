@@ -10,6 +10,7 @@ import {
 const initialState = {
     loading: false,
     error: null,
+    details_Materiel: null,
     materials: [],
     searchText: "",
 };
@@ -39,15 +40,14 @@ const materielSlice = createSlice({
 
             .addCase(showMateriel.pending, (state) => {
                 state.loading = true;
-                state.error = null;
             })
             .addCase(showMateriel.rejected, (state, action) => {
                 state.loading = false;
-                state.error = action.payload.message;
+                state.error = action.payload;
             })
             .addCase(showMateriel.fulfilled, (state, action) => {
                 state.loading = false;
-                state.detailsMateriel = action.payload;
+                state.details_Materiel = action.payload;
             })
 
             .addCase(createMateriel.pending, (state) => {

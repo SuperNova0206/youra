@@ -47,10 +47,10 @@ export default function ListMateriel() {
                                         <td>{material.id}</td>
                                         <td>{material.description}</td>
                                         <td>
-                                            <Link to={`/materiel/${material.id}`} className="btn btn-info">
+                                            <Link to={`/materiels/${material.id}`} className="btn btn-info">
                                                 Détails
                                             </Link>
-                                            <Link to={`/materiel/${material.id}/edit`} className="btn btn-info">
+                                            <Link to={`/materiels/${material.id}/edit`} className="btn btn-info">
                                                 Éditer
                                             </Link>
                                             <button onClick={() => handleDelete(material)} className="btn btn-danger">
