@@ -16,7 +16,6 @@ class Material extends Model
     public function space() {
         return $this->belongsTo(Space::class);
     }
-
     public function material_group() {
         return $this->belongsTo(MaterialGroup::class);
     }
