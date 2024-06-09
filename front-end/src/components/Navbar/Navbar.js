@@ -1,12 +1,14 @@
-// Navbar.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import ThemeSwitchButton from '../Button/Button';
-import 'animate.css'; // Importer animate.css
+import 'animate.css';
 import LogoutPage from '../auth/LogoutPage';
+import { selectAuth } from '../../store/ProfileSlice';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const auth = useSelector(selectAuth);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -24,24 +26,31 @@ const Navbar = () => {
                 <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <Link to="/formateurs" className="nav-link">
-                                <i className="bi bi-person-fill"></i> Formateurs
-                            </Link>
-                        </li>
-                        <li className="nav-item">
                             <Link to="/materiels" className="nav-link">
                                 <i className="bi bi-laptop"></i> Matériels
                             </Link>
                         </li>
-                        <li className="nav-item">
-                            <Link to="/login" className="nav-link">
-                                <i className="bi bi-box-arrow-in-right"></i> Se connecter
-                            </Link>
-                        </li>
+                        {auth.isAuthenticated ? (
+                            <>
+                                <li className="nav-item">
+                                    <span className="nav-link">
+                                        {auth.user && auth.user.user_name}
+                                    </span>
+                                </li>
+                                <li className="nav-item">
+                                    <LogoutPage />
+                                </li>
+                            </>
+                        ) : (
+                            <li className="nav-item">
+                                <Link to="/login" className="nav-link">
+                                    <i className="bi bi-box-arrow-in-right"></i> Se connecter
+                                </Link>
+                            </li>
+                        )}
                     </ul>
+                    <ThemeSwitchButton />
                 </div>
-                <LogoutPage/>
-                <ThemeSwitchButton />
             </div>
         </nav>
     );

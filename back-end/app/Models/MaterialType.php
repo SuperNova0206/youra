@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class MaterialType extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'material_id'
-    ];
-    public function materials() {
-        return $this->hasMany(Material::class);
+
+    protected $fillable = ['name', 'material_id'];
+
+    public function material()
+    {
+        return $this->belongsTo(Material::class);
     }
 }

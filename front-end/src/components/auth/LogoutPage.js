@@ -1,29 +1,28 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
-import { clearProfileDetails } from "../../store/ProfileSlice";
-import { AiOutlineLogout } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { AiOutlineLogout } from 'react-icons/ai';
+import { logoutUser } from '../../services/authService';
 
 const LogoutPage = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const handleLogout = () => {
-      dispatch(clearProfileDetails());
-      navigate("/register");
-  };
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-  return (
-    <div className="flex items-center justify-center w-full h-screen bg-gray-100">
-      <button
-        onClick={handleLogout}
-        className="bg-black text-white py-2 px-4 rounded-md flex items-center gap-2"
-      >
-        <AiOutlineLogout />
-        <span>Logging out</span>
-      </button>
-    </div>
-  );
+    const handleLogout = async () => {
+        const resultAction = await dispatch(logoutUser());
+        if (logoutUser.fulfilled.match(resultAction)) {
+            navigate('/login');
+        } else {
+            console.error('Logout failed:', resultAction.payload);
+        }
+    };
+
+    return (
+        <button className="nav-link btn btn-link" onClick={handleLogout}>
+            <AiOutlineLogout />
+            <span> Logout</span>
+        </button>
+    );
 };
 
 export default LogoutPage;

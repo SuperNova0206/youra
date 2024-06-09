@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'permission_type'
-    ];
-    public function users(){
-        return $this->belongsToMany(Users::class, 'user_permission_info', 'permission_id', 'user_id')->withTimestamps();
+
+    protected $fillable = ['permission_type'];
+
+    public function userPermissionInfos()
+    {
+        return $this->hasMany(UserPermissionInfo::class, 'permission_id');
     }
 }

@@ -5,22 +5,22 @@ import { FaUserAlt, FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import "animate.css";
 
-import { registerUser } from "../../services/authService";
-import { setProfileDetails } from "../../store/ProfileSlice";
+import { registerUser } from "../../services/authService"; // تأكد من أن مسار الملف صحيح
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [user_name, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-      const userData = { username, email, password };
-      const { payload } = await dispatch(registerUser(userData));
-      dispatch(setProfileDetails(payload));
-      navigate("/login");
+    const userData = { user_name, email, password, password_confirmation: passwordConfirmation };
+    console.log(userData);
+    dispatch(registerUser(userData));
+        navigate('/login'); 
   };
 
   return (
@@ -56,11 +56,11 @@ const RegisterPage = () => {
                   <input
                     required
                     type="text"
-                    name="username"
+                    name="name"
                     className="form-control"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Name"
+                    value={user_name}
+                    onChange={(e) => setUserName(e.target.value)}
                   />
                 </div>
                 <div className="mb-3 input-group">
@@ -89,6 +89,20 @@ const RegisterPage = () => {
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3 input-group">
+                  <span className="input-group-text">
+                    <FaLock />
+                  </span>
+                  <input
+                    required
+                    type="password"
+                    name="password_confirmation"
+                    className="form-control"
+                    placeholder="Confirm Password"
+                    value={passwordConfirmation}
+                    onChange={(e) => setPasswordConfirmation(e.target.value)}
                   />
                 </div>
                 <div className="d-flex flex-column-reverse flex-md-row justify-content-between mt-3">

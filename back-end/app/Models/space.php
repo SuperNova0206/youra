@@ -8,14 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Space extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name',
-        'type_id'
-    ];
-    public function space_type() {
-        return $this->belongsTo(SpaceType::class);
-    }
-    public function trainer_space_info() {
-        return $this->belongsToMany(Trainer::class, 'trainer_space_info', 'trainer_id', 'space_id')->withTimestamps();
+
+    protected $fillable = ['name', 'type_id'];
+
+    public function spaceType()
+    {
+        return $this->belongsTo(SpaceType::class, 'type_id');
     }
 }
+

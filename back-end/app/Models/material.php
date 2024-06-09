@@ -8,20 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Material extends Model
 {
     use HasFactory;
-    public $timestamps = false;
-    protected $fillable = [
-        'space_id',
-        'description'
-    ];
-    public function space() {
+
+    protected $fillable = ['space_id', 'description'];
+
+    public function space()
+    {
         return $this->belongsTo(Space::class);
     }
 
-    public function material_group() {
-        return $this->belongsTo(MaterialGroup::class);
+    public function materialGroups()
+    {
+        return $this->hasMany(MaterialGroup::class);
     }
 
-    public function material_type() {
-        return $this->belongsTo(MaterilaType::class);
+    public function materialTypes()
+    {
+        return $this->hasMany(MaterialType::class);
+    }
+
+    public function trainerSpaceInfo()
+    {
+        return $this->hasOne(TrainerSpaceInfo::class, 'space_id', 'space_id');
     }
 }

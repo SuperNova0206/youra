@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('name', ['ordinateurs de bureau', 'ecrans et claviers', 'Cables electriques', 'rallonges', 'adaptateurs secteur', 'chargeurs', 'equipement reseau', 'equipement audio', 'equipement de securite']);
             $table->unsignedBigInteger('material_id');
-            $table->foreign('material_id')->references('id')->on('materials');
+            $table->foreign('material_id')->references('id')->on('materials')->onDelete('cascade');
             $table->timestamps();
         });
     }

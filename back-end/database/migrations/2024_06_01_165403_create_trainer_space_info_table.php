@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('trainer_space_info', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('trainer_id');
-            $table->foreign('trainer_id')->references('id')->on('trainers');
+            $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
             $table->unsignedBigInteger('space_id');
-            $table->foreign('space_id')->references('id')->on('spaces');
+            $table->foreign('space_id')->references('id')->on('spaces')->onDelete('cascade');
             $table->timestamps();
         });
     }

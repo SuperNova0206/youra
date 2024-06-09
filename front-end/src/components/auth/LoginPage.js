@@ -4,10 +4,9 @@ import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
-import "animate.css"; // Import animate.css
+import "animate.css"; // Import animate.css for animations
 
-import { loginUser } from "../../services/authService"; // Import loginUser from authService
-import { setProfileDetails } from "../../store/ProfileSlice";
+import { loginUser } from "../../services/authService"; // Import loginUser action
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -16,16 +15,16 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // form submit:
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-      const userData = {
-        email,
-        password,
-      };
-      const { payload} = await dispatch(loginUser(userData));
-        dispatch(setProfileDetails(payload));
-        navigate("/");
+    const userData = {
+      email,
+      password,
+    };
+    console.log(userData);
+    dispatch(loginUser(userData));
+      navigate("/");
   };
 
   return (
@@ -91,9 +90,8 @@ const LoginPage = () => {
                   <button
                     type="submit"
                     className="btn btn-info mt-3 mt-md-0 animate__animated animate__fadeIn"
-                    disabled={loading}
                   >
-                    {loading ? "Logging in..." : "Login"}
+                  Login
                   </button>
                   <Link
                     to="/register"

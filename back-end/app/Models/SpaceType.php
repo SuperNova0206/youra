@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class SpaceType extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'type'
-    ];
-    public function spaces() {
-        return $this->hasMany(Space::class); 
+
+    protected $fillable = ['type'];
+
+    public function spaces()
+    {
+        return $this->hasMany(Space::class, 'type_id');
     }
 }

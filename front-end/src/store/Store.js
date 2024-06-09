@@ -5,6 +5,6 @@ import materielReducer from "./MaterielSlice";
 export default configureStore( {
     reducer: {
         materiel: materielReducer,
-        Profile: ProfileReducer,
+        profile:ProfileReducer,
     },
 } );
